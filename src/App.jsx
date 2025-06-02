@@ -1,13 +1,8 @@
-import Hero from "./components/Hero"
-import Navbar from "./components/Navbar"
-import Pets from "./components/Pets"
+import Home from "./components/Home"
 
 function App() {
   return (
-   <> <Navbar/>
-    <Hero/>
-    <Pets/>
-    </>
+    <Home/>
   )
 }
 

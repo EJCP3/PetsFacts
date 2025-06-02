@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react";
-import { getCatPictures } from "../services/Cat";
+
 import Card from "./Card";
-import { getDogPictures } from "../services/Dog";
+// import { useEffect, useState } from "react";
 
-export default function Pets() {
-  const [cat, setCat] = useState("");
-  const [dog, setDog] = useState("");
+export default function Pets({ getCat , dog }) {
 
-  useEffect(() => {
-    getCatPictures().then((newFact) => setCat(newFact));
-    getDogPictures().then((newFact) => setDog(newFact));
-  }, []);
 
-  console.log(dog);
+
   return (
     <section className="flex gap-4 justify-center mt-10 px-4">
-      <Card img={cat.url} />
-      <Card img={dog.url} />
+     {
+      getCat ?(
+      <Card img={getCat?.img}  fact={getCat?.fact} />
+      )
+      :(<p>no hay gatos</p>)
+     }
+      {/* <Card data={dog} /> */}
     </section>
   );
 }

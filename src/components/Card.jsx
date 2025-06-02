@@ -1,19 +1,15 @@
 
 
-export default function Card({img, title, paragraph}) {
+export default function Card({ fact, img }) {
+  
   return (
-    <div className="card bg-base-200 w-96 shadow-sm">
-  <figure>
-    <img className=""
-      src={img}
-      alt={title} />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">{title}</h2>
-    <p>{paragraph}
-    </p>
-  </div>
-</div>
-
-  )
+    <article className="card bg-base-200 w-96 shadow-sm transition-transform duration-500">
+      <figure className="h-80">
+        <img className="w-full h-80" src={img}  />
+      </figure>
+      <div className="card-body">
+        <p>{fact}</p>
+      </div>
+    </article>
+  );
 }

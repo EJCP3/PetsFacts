@@ -1,11 +1,27 @@
-import React from 'react'
+export default function Btn({ refresDataCat, refresDataDog }) {
+  const handleClick = (e) => {
+    const nameBtn = e.target.name;
 
-export default function Btn() {
+    nameBtn === "cat"
+      ? refresDataCat()
+      : nameBtn === "dog"
+      ? refresDataDog()
+      : nameBtn === "both"
+      ? (refresDataCat(), refresDataDog())
+      : null;
+  };
+
   return (
-   <div class="join">
-  <button class="btn join-item">Cat</button>
-  <button class="btn join-item">Dog</button>
-  <button class="btn join-item">Both pets</button>
-</div>
-  )
+    <div className="join">
+      <button name="cat" className="btn join-item" onClick={handleClick}>
+        Cat
+      </button>
+      <button name="dog" className="btn join-item" onClick={handleClick}>
+        Dog
+      </button>
+      <button name="both" className="btn join-item" onClick={handleClick}>
+        Both pets
+      </button>
+    </div>
+  );
 }
