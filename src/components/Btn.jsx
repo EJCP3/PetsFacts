@@ -1,4 +1,4 @@
-export default function Btn({ refresDataCat, refresDataDog }) {
+export default function Btn({ refresDataCat, refresDataDog, isTrueEng }) {
   const handleClick = (e) => {
     const nameBtn = e.target.name;
 
@@ -14,13 +14,13 @@ export default function Btn({ refresDataCat, refresDataDog }) {
   return (
     <div className="join">
       <button name="cat" className="btn join-item" onClick={handleClick}>
-        Cat
+        {isTrueEng ? "Gato" : "Cat"}
       </button>
       <button name="dog" className="btn join-item" onClick={handleClick}>
-        Dog
+        {isTrueEng ? "Perro" : "Dog"}
       </button>
       <button name="both" className="btn join-item" onClick={handleClick}>
-        Both pets
+        {isTrueEng ? "Ambos" : "Both Pets"}
       </button>
     </div>
   );

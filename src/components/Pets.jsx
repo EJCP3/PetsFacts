@@ -1,8 +1,7 @@
 
 import Card from "./Card";
-// import { useEffect, useState } from "react";
 
-export default function Pets({ getCat , dog }) {
+export default function Pets({ getCat , getDog }) {
 
 
 
@@ -14,7 +13,11 @@ export default function Pets({ getCat , dog }) {
       )
       :(<p>no hay gatos</p>)
      }
-      {/* <Card data={dog} /> */}
+     {
+      getDog? (
+        <Card img={getDog?.img} fact={getDog?.fact} />
+      ): (<p>no hay gatos</p>)
+     }
     </section>
   );
 }

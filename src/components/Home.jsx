@@ -11,26 +11,31 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const { cat, refresDataCat } = useGetDataCat();
   const { dog, refresDataDog } = useGetDataDog();
-
-  const { catNew, changeText } = UseGetTranslation();
+  const { dogNew, catNew, changeText, isTrueEng } = UseGetTranslation({ cat, dog });
   const [getCat, setGetCat] = useState();
+  const [getDog, setGetDog] = useState();
 
   useEffect(() => {
-    if (catNew.img && catNew.fact) {
-     setGetCat(catNew)
-    } else {
-     setGetCat(cat)
-    }
-  }, [cat , catNew]);
+    setGetCat(cat);
+    setGetDog(dog);
+  }, [cat, dog]);
+  useEffect(() => {
+    setGetCat(catNew);
+    setGetDog(dogNew);
+  }, [catNew, dogNew]);
 
   return (
     <>
       <Navbar changeText={changeText} />
       <section className="text-center">
-        <Hero />
-        <Btn refresDataCat={refresDataCat} refresDataDog={refresDataDog} />
+        <Hero isTrueEng={isTrueEng} />
+        <Btn isTrueEng={isTrueEng} refresDataCat={refresDataCat} refresDataDog={refresDataDog} />
       </section>
-      <Pets getCat={getCat} dog={dog} />
+      {getCat && getDog ? (
+        <Pets getCat={getCat} getDog={getDog} />
+      ) : (
+        <p className="text-center text-2xl font-bold">Los gatos y perros están llegando... <span className="loading loading-dots loading-xl"></span></p>
+      )}
     </>
   );
 }
