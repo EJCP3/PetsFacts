@@ -11,18 +11,14 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const { cat, refresDataCat } = useGetDataCat();
   const { dog, refresDataDog } = useGetDataDog();
-  const { dogNew, catNew, changeText, isTrueEng } = UseGetTranslation({ cat, dog });
-  const [getCat, setGetCat] = useState();
-  const [getDog, setGetDog] = useState();
+  const { petNew, changeText, isTrueEng } = UseGetTranslation({ cat, dog });
+  const [getPet, setGetPet] = useState();
+ 
 
   useEffect(() => {
-    setGetCat(cat);
-    setGetDog(dog);
-  }, [cat, dog]);
-  useEffect(() => {
-    setGetCat(catNew);
-    setGetDog(dogNew);
-  }, [catNew, dogNew]);
+    setGetPet(petNew)
+  }, [petNew]);
+ 
 
   return (
     <>
@@ -31,8 +27,8 @@ export default function Home() {
         <Hero isTrueEng={isTrueEng} />
         <Btn isTrueEng={isTrueEng} refresDataCat={refresDataCat} refresDataDog={refresDataDog} />
       </section>
-      {getCat && getDog ? (
-        <Pets getCat={getCat} getDog={getDog} />
+      {getPet ? (
+        <Pets getPet={getPet} />
       ) : (
         <p className="text-center text-2xl font-bold">Los gatos y perros están llegando... <span className="loading loading-dots loading-xl"></span></p>
       )}

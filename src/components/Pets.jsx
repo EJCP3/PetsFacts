@@ -1,23 +1,18 @@
-
 import Card from "./Card";
 
-export default function Pets({ getCat , getDog }) {
-
-
-
+export default function Pets({ getPet }) {
   return (
     <section className="flex gap-4 justify-center mt-10 px-4">
-     {
-      getCat ?(
-      <Card img={getCat?.img}  fact={getCat?.fact} />
-      )
-      :(<p>no hay gatos</p>)
-     }
-     {
-      getDog? (
-        <Card img={getDog?.img} fact={getDog?.fact} />
-      ): (<p>no hay gatos</p>)
-     }
+      {getPet.cat ? (
+        <Card img={getPet.cat.img} fact={getPet.cat.fact} />
+      ) : (
+        <p className="text-center text-2xl font-bold">no hay gatos</p>
+      )}
+      {getPet.dog ? (
+        <Card img={getPet.dog.img} fact={getPet.dog.fact} />
+      ) : (
+        <p className="text-center text-2xl font-bold">no hay Perro</p>
+      )}
     </section>
   );
 }
